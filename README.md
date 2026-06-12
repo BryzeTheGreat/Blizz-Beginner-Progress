@@ -1,2 +1,2 @@
 # Blizz-Beginner-Progress
-This repository is going to record my progress from my first project till the recent :D
+This is my first version of my Blizz Project :D
