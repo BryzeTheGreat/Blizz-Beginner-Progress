@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='HomePage/' + 'homepage.css') }}">
+        <title>Blizz - HomePage</title>
+    </head>
+
+    <body>
+
+        <div class="sidebar">
+
+            <div class="create-post">
+                <button id="go-to-post-creation">
+                    <img src="{{ url_for('static', filename='HomePage/images/' + 'addimg-removebg-preview.png')}}">
+                </button>
+            </div>
+
+        </div>
+
+        <div class="post-container">
+            <div class="post">
+                {% for post in feed_posts %}
+                    <div class="user-posted">
+                        <p>@{{ post.username }}</p>
+                    </div>
+                    <div class="post-caption">
+                        <p>{{ post.content }}</p>
+                    </div>
+                    <img src="{{ url_for('static', filename='PostIMG/' + post.image)}}">
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="post-creation-container">
+            <div class="post-creation">
+                <form method="POST" enctype="multipart/form-data">
+                    <button id="close-postcreation" class="closepost" type="button">
+                        <img src="{{ url_for('static', filename='Homepage/images/' + 'xbut-removebg-preview.png')}}">
+                    </button>
+                    <textarea placeholder="Write Something..." name="post_content"></textarea>
+                    <div class="previewimage">
+                        <img id=imagepreview src="" alt="Preview" style="display: none;"
+>                   </div>
+                    <div class="add-image">
+                        <label for="imagechooser" class="custom-upload">
+                            + IMAGE
+                        </label>
+                        <input type="file" id="imagechooser", accept="image/*" name="post_image">
+
+                        <button id="submitbtn" type="submit">POST</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <script src="{{ url_for('static', filename='HomePage/' + 'homepage.js')}}"></script>
+    </body>
+</html>
